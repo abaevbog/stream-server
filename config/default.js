@@ -30,6 +30,7 @@ var config = {
 	// Notification action period -- clients are given a randomly chosen delay within this time
 	// period before they should act upon the notification, so that we don't DDoS ourselves
 	globalTopicsDelayPeriod: 180 * 1000,
+	noContinuedDelay: 250,
 	continuedDelayDefault: 3 * 1000,
 	continuedDelay: 30 * 1000,
 	statsD: {

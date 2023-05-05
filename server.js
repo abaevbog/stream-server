@@ -60,10 +60,14 @@ module.exports = function (onInit) {
 			clearTimeout(timeout);
 			delete continuedTimeouts[topic];
 		}
+		if (continued) {
+			continuedTimeouts[topic] = setTimeout(fn, config.get('continuedDelay'));
+		} else if (continued == false) {
+			continuedTimeouts[topic] = setTimeout(fn, config.get('noContinuedDelay'));
+		} else {
+			continuedTimeouts[topic] = setTimeout(fn, config.get('continuedDelayDefault'));
+		}
 		
-		continuedTimeouts[topic] = setTimeout(fn,
-			continued ? config.get('continuedDelay') : config.get('continuedDelayDefault')
-		);
 	}
 	
 	/**
