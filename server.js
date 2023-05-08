@@ -62,10 +62,12 @@ module.exports = function (onInit) {
 		}
 		if (continued) {
 			continuedTimeouts[topic] = setTimeout(fn, config.get('continuedDelay'));
-		} else if (continued == false) {
-			continuedTimeouts[topic] = setTimeout(fn, config.get('noContinuedDelay'));
-		} else {
-			continuedTimeouts[topic] = setTimeout(fn, config.get('continuedDelayDefault'));
+		} 
+		else if (continued == false) {
+			continuedTimeouts[topic] = setTimeout(fn, config.get('notContinuedDelay'));
+		} 
+		else {
+			continuedTimeouts[topic] = setTimeout(fn, config.get('defaultDelay'));
 		}
 		
 	}
